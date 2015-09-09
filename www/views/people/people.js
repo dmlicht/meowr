@@ -2,26 +2,28 @@ angular.module('starter')
 .controller('CardsCtrl', function ($scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate) {
   console.log('CARDS CTRL');
   $ionicSideMenuDelegate.canDragContent(false);
-  var cardTypes = [];
+  var cats = [];
   $ionicLoading.show();
   $http.get('https://randomuser.me/api/?results=5').success(function (response) {
-      angular.forEach(response.results, function (famous) {
-        cardTypes.push(famous);
-        //console.log(JSON.stringify(famous));
+    console.log(JSON.stringify(response.results));
+
+      angular.forEach(response.results, function (result) {
+        cats.push(result);
+        //console.log(JSON.stringify(result));
       });
       $ionicLoading.hide();
     }).error(function (err) {
       console.log(err);
     });
 
-  //$scope.cards = Array.prototype.slice.call(cardTypes, 0);
-  $scope.cards = cardTypes;
+  //$scope.cards = Array.prototype.slice.call(cats, 0);
+  $scope.cards = cats;
   $scope.cardDestroyed = function(index) {
     $scope.cards.splice(index, 1);
   };
 
   $scope.addCard = function() {
-    var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
+    var newCard = cats[Math.floor(Math.random() * cats.length)];
     newCard.id = Math.random();
     $scope.cards.push(angular.extend({}, newCard));
   }
