@@ -57,7 +57,15 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.tinderCards'])
                 controller: 'inviteCtrl'
               }
             }
-  })
+  }).state('app.favorites', {
+      url: '/favorites',
+      views: {
+        'menuContent': {
+          templateUrl: 'views/favorites/favorites.html',
+          controller: 'favoritesCtrl'
+        }
+      }
+    })
   ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/people');
