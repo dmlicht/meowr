@@ -25,11 +25,13 @@ angular.module('starter')
     }
   };
 
-  $scope.yesCard = function() {
+  $scope.yesCard = function(index) {
+    $scope.cardDestroyed(index);
     console.log('YES');
   };
 
-  $scope.noCard = function() {
+  $scope.noCard = function(index) {
+    $scope.cardDestroyed(index);
     console.log('NO');
   };
   $scope.toggleLeft = function() {

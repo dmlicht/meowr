@@ -18,8 +18,8 @@
               </div>
               <div class="buttondesc">
                 <div class="username"><i class="icon ion-android-contact"></i> {{card.user.username}}</div>
-                <button ng-click="noCard()" class="button button-assertive">No</button>
-                <button ng-click="yesCard()" class="button button-balanced">Yes</button></div>
+                <button ng-click="noCard($index)" class="button button-assertive">No</button>
+                <button ng-click="yesCard($index)" class="button button-balanced">Yes</button></div>
     </td-card>
   </td-cards>
 </ion-pane>
