@@ -8,7 +8,7 @@ angular.module('starter')
     if ($scope.cards.length < 1){
       $ionicLoading.show();
     }
-    $http.get('https://randomuser.me/api/?results=5').success(function (response) {
+    $http.get('https://randomuser.me/api/?results=20').success(function (response) {
       $scope.cards.unshift.apply($scope.cards, response.results);
       $ionicLoading.hide();
     }).error(function (err) {
@@ -20,7 +20,7 @@ angular.module('starter')
 
   $scope.cardDestroyed = function(index) {
     $scope.cards.splice(index, 1);
-    if ($scope.cards.length < 2) {
+    if ($scope.cards.length < 15) {
       addCats();
     }
   };
