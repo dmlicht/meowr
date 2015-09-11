@@ -334,7 +334,6 @@
                 swipeableCard.onTransitionLeft();
               } else {
                 swipeableCard.onTransitionRight();
-                console.log("Swiped out on right.");
               }
               $timeout(function() {
                 $scope.onTransitionOut({amt: amt});

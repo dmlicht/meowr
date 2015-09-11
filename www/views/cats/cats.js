@@ -18,6 +18,11 @@ angular.module('starter')
 
   addCats(5);
 
+  addFavorite = function(catCard)  {
+    var yesCat = $scope.cards[catCard];
+    FavoritesService.yesCats.push(yesCat);
+  };
+
   $scope.cardDestroyed = function(index) {
     $scope.cards.splice(index, 1);
     if ($scope.cards.length < 15) {
@@ -26,8 +31,7 @@ angular.module('starter')
   };
 
   $scope.yesCard = function(index) {
-    var yesCat = $scope.cards[index];
-    FavoritesService.yesCats.push(yesCat);
+    addFavorite(index);
     $scope.cardDestroyed(index);
     console.log('YES');
   };
@@ -36,19 +40,17 @@ angular.module('starter')
     $scope.cardDestroyed(index);
     console.log('NO');
   };
-  $scope.toggleLeft = function() {
-  $ionicSideMenuDelegate.toggleLeft();
-  };
-    $scope.cardSwipedLeft = function(index) {
-      console.log('LEFT SWIPE');
-    };
-    $scope.cardSwipedRight = function(index) {
-      debugger;
-      FavoritesService.yesCats.push(index);
-      console.log('RIGHT SWIPE');
-    };
-})
-  // TODO: this isn't being hit. Investigate.
-.controller('CardCtrl', function($scope, TDCardDelegate) {
 
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+
+  $scope.cardSwipedLeft = function(index) {
+    console.log('LEFT SWIPE');
+  };
+
+  $scope.cardSwipedRight = function(index) {
+    addFavorite(index);
+    console.log('RIGHT SWIPE');
+  };
 });
