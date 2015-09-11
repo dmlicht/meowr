@@ -31,11 +31,11 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.tinderCards', 'starter.ser
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
-  .state('app.people', {
-      url: '/people',
+  .state('app.cats', {
+      url: '/cats',
       views: {
         'menuContent': {
-          templateUrl: 'views/people/people.html',
+          templateUrl: 'views/cats/cats.html',
           controller: 'profileCtrl'
         }
       }
@@ -68,7 +68,7 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.tinderCards', 'starter.ser
     })
   ;
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/people');
+  $urlRouterProvider.otherwise('/app/cats');
 })
 .directive('noScroll', function($document) {
 
