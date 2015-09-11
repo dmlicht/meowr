@@ -39,11 +39,13 @@ angular.module('starter')
   $ionicSideMenuDelegate.toggleLeft();
   };
 })
+  // TODO: this isn't being hit. Investigate.
 .controller('CardCtrl', function($scope, TDCardDelegate) {
   $scope.cardSwipedLeft = function(index) {
     console.log('LEFT SWIPE');
   };
   $scope.cardSwipedRight = function(index) {
+    debugger;
     FavoritesService.yesCats.push(index);
     console.log('RIGHT SWIPE');
   };
