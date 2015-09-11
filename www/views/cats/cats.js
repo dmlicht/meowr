@@ -4,11 +4,11 @@ angular.module('starter')
   $ionicSideMenuDelegate.canDragContent(false);
   $scope.cards = [];
 
-  addCats = function(){
-    if ($scope.cards.length < 1){
+  addCats = function(amount){
+    if ($scope.cards.length < 1) {
       $ionicLoading.show();
     }
-    $http.get('https://randomuser.me/api/?results=20').success(function (response) {
+    $http.get('https://randomuser.me/api/?results='+amount).success(function (response) {
       $scope.cards.unshift.apply($scope.cards, response.results);
       $ionicLoading.hide();
     }).error(function (err) {
@@ -16,17 +16,18 @@ angular.module('starter')
     });
   };
 
-  addCats();
+  addCats(5);
 
   $scope.cardDestroyed = function(index) {
     $scope.cards.splice(index, 1);
     if ($scope.cards.length < 15) {
-      addCats();
+      addCats(20);
     }
   };
 
   $scope.yesCard = function(index) {
-    FavoritesService.yesCats.push(index);
+    var yesCat = $scope.cards[index];
+    FavoritesService.yesCats.push(yesCat);
     $scope.cardDestroyed(index);
     console.log('YES');
   };
@@ -45,8 +46,8 @@ angular.module('starter')
     console.log('LEFT SWIPE');
   };
   $scope.cardSwipedRight = function(index) {
-    debugger;
-    FavoritesService.yesCats.push(index);
+    var yesCat = $scope.cards[index];
+    FavoritesService.yesCats.push(yesCat);
     console.log('RIGHT SWIPE');
   };
-})
+});
