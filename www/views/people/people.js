@@ -1,5 +1,5 @@
 angular.module('starter')
-.controller('CardsCtrl', function ($scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate) {
+.controller('CardsCtrl', function ($scope, FavoritesService, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate) {
   console.log('CARDS CTRL');
   $ionicSideMenuDelegate.canDragContent(false);
   $scope.cards = [];
@@ -26,6 +26,7 @@ angular.module('starter')
   };
 
   $scope.yesCard = function(index) {
+    FavoritesService.yesCats.push(index);
     $scope.cardDestroyed(index);
     console.log('YES');
   };
@@ -38,11 +39,14 @@ angular.module('starter')
   $ionicSideMenuDelegate.toggleLeft();
   };
 })
+  // TODO: this isn't being hit. Investigate.
 .controller('CardCtrl', function($scope, TDCardDelegate) {
   $scope.cardSwipedLeft = function(index) {
     console.log('LEFT SWIPE');
   };
   $scope.cardSwipedRight = function(index) {
+    debugger;
+    FavoritesService.yesCats.push(index);
     console.log('RIGHT SWIPE');
   };
 })
